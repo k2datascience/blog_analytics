@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Blog Analytics</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row mb-5">
+        <div class="col text-center">
+          <h1>Blog Analytics</h1>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center mb-5">
+        <div class="col text-center">
+          <p class="lrg-heading">
+            {{ stats['num_articles'] }}
+          </p>
+          <p class="description">
+            Total Article Count
+          </p>
+        </div>
+        <div class="col text-center">
+          <p class="lrg-heading">
+            {{ stats['reading_time'] }}
+          </p>
+          <p class="description">
+            Average Reading Time (mins)
+          </p>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col text-center">
+          <p class="description">
+            Top Categories
+          </p>
+          {% for category in categories[:10] %}
+            <p>
+              {{ category[0] | capitalize }} - {{ category[1] }}
+            </p>
+          {% endfor %}
+        </div>
+        <div class="col text-center">
+          <p class="description">
+            Top Authors
+          </p>
+          {% for author in authors[:10] %}
+            <p>
+              {{ author[0] }} - {{ author[1] }}
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col text-center">
+          <p class="description">
+            Weekday Frequency
+          </p>
+          <canvas id="weekdayChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script>
+      var ctx = document.getElementById("weekdayChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              datasets: [{
+                  data: [{{ weekdays['Monday'] }}, {{ weekdays['Tuesday'] }}, {{ weekdays['Wednesday'] }}, {{ weekdays['Thursday'] }}, {{ weekdays['Friday'] }}],
+                  backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              }]
+          },
+          options: {
+              legend: {
+                display: false
+              },
+              scales: {
+                  xAxes: [{
+                      gridLines: {
+                          color: "rgba(0, 0, 0, 0)",
+                      }
+                  }],
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      },
+                      gridLines: {
+                          color: "rgba(0, 0, 0, 0)",
+                      }
+                  }]
+              }
+          }
+      });
+    </script>
+
+  </body>
+</html>
