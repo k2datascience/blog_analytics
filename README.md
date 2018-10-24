@@ -3,7 +3,8 @@
 Companion code for the tutorial series about building an analytics dashboard for a blog.
 
 - [YouTube Playlist](https://www.youtube.com/watch?v=MghNTBnKEPs&list=PLOqGp_WNO-_7JnSkb-P3lmEc-0N9dlPic)
-- [Medium Article]()
+- [Udemy Course (free)[(https://www.udemy.com/simple-blogging-analytics-dashboard-in-python/)]
+- [Medium Article (not published yet)]()
 - [Deployed Heroku App](https://thawing-journey-86363.herokuapp.com/)
 
 ## File Organization
