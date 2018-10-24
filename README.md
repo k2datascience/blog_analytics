@@ -2,7 +2,7 @@
 
 Companion code for the tutorial series about building an analytics dashboard for a blog.
 
-- [YouTube Playlist](https://www.youtube.com/watch?v=ot7_wKINkPk&list=PLOqGp_WNO-_7JnSkb-P3lmEc-0N9dlPic)
+- [YouTube Playlist](https://www.youtube.com/watch?v=MghNTBnKEPs&list=PLOqGp_WNO-_7JnSkb-P3lmEc-0N9dlPic)
 - [Medium Article]()
 - [Deployed Heroku App](https://thawing-journey-86363.herokuapp.com/)
 
